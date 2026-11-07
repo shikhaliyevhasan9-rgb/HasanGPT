@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HASANGPT</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;color:#fff;
+ font-family:Arial,sans-serif;
+ background:radial-gradient(ellipse at top,#25205d,#090d20 65%);
+ display:flex;align-items:center;justify-content:center;
+}
+.app{width:100%;max-width:900px;height:100vh;padding:25px;display:flex;flex-direction:column}
+header{text-align:center;padding:35px 0}
+.logo{font-size:43px;font-weight:bold;background:linear-gradient(90deg,#39c5ff,#a36bff);background-clip:text;color:transparent}
+header p{color:#aeb5d8}
+#messages{flex:1;overflow-y:auto;padding:15px}
+.msg{padding:15px 19px;margin:12px 0;border-radius:17px;max-width:80%;line-height:1.5;white-space:pre-wrap}
+.user{margin-left:auto;background:linear-gradient(120deg,#2868c9,#7749d5)}
+.bot{margin-right:auto;background:#171d38;border:1px solid #343c67}
+form{display:flex;gap:10px;padding:15px;background:#171d38;border:1px solid #424b80;border-radius:20px}
+input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:white;font-size:16px}
+button{border:0;border-radius:13px;padding:13px 20px;background:linear-gradient(120deg,#279bfa,#9255f5);color:white;font-weight:bold;cursor:pointer}
+footer{text-align:center;color:#777f9f;font-size:12px;padding:15px}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<div class="logo">HASANGPT</div>
+<p>Sənin ağıllı süni intellekt köməkçin</p>
+</header>
+<div id="messages">
+<div class="msg bot">Salam! Mən HASANGPT. Sənə necə kömək edə bilərəm?
+  </div>
+</div>
+<form id="chatForm">
+<input id="prompt" placeholder="Mənə sual ver..." autocomplete="off">
+<button type="submit">Göndər</button>
+</form>
+<footer>HASANGPT • AI Assistant</footer>
+</div>
+<script>
+const form=document.getElementById('chatForm');
+const input=document.getElementById('prompt');
+const messages=document.getElementById('messages');
+form.addEventListener('submit',function(e){
+ e.preventDefault();
+ const q=input.value.trim();
+ if(!q)return;
+ const user=document.createElement('div');
+ user.className='msg user';
+ user.textContent=q;
+ messages.appendChild(user);
+ input.value='';
+ const bot=document.createElement('div');
+ bot.className='msg bot';
+ bot.textContent='HASANGPT AI serveri qoşulduqdan sonra cavab verəcək.';
+ messages.appendChild(bot);
+ messages.scrollTop=messages.scrollHeight;
+});
+</script>
+</body>
+</html>
